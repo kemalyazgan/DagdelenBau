@@ -47,147 +47,115 @@ const slides = [
 
 const services = [
   {
-    key: "leichtbauwaende",
-    title: "Leichtbauwände (Gipskarton)",
-    image: "https://source.unsplash.com/1200x800/?drywall,partition",
+    key: "vermittlung",
+    title: "Handwerker‑Vermittlungsservice",
+    image: "/photos/handwerkervermittlung.jpg",
     description:
-      "Nichttragende Innenwände in Metall- oder Holzständerbauweise – flexibel, schnell und sauber montiert.",
+        "Wir vermitteln Ihnen qualifizierte Handwerksbetriebe für alle relevanten Gewerke – schnell, zuverlässig und passend zu Ihrem Projekt.",
+    serviceInfo:
+        "Auswahl passender Fachbetriebe aus unserem Netzwerk, Terminabstimmung und laufende Kommunikation – ein fester Ansprechpartner bis zur Abnahme.",
     facts: [
-      "Metall-/Holzständer: CW/UW, Holz KVH",
-      "Ein-/mehrlagige Beplankung",
-      "Türen & Zargen integriert",
+      "Geprüfte Fachbetriebe",
+      "Schnelle Terminfindung",
+      "Koordination durch uns",
     ],
   },
   {
-    key: "abgehaengte-decken",
-    title: "Abgehängte Decken",
-    image: "https://source.unsplash.com/1200x800/?ceiling,construction",
+    key: "entruempelung",
+    title: "Entrümpelung & Haushaltsauflösungen",
+    image: "/photos/entruempelung.jpg",
     description:
-      "Deckenabhängungen für Technikführung, Akustik und Design – vom Raster bis zur fugenlosen GK-Decke.",
+        "Wir räumen Wohnungen, Häuser und Baustellen zügig und gründlich – inkl. fachgerechter Entsorgung.",
+    serviceInfo:
+        "Schnelle, gründliche Räumung inkl. Sortierung und fachgerechter Entsorgung; auf Wunsch besenreine Übergabe und Dokumentation.",
     facts: [
-      "GK fugenlos / Rasterdecken",
-      "Lichtvouten & Revisionsöffnungen",
-      "Brandschutzanforderungen möglich",
+      "Wohnung, Haus & Baustelle",
+      "Fachgerechte Entsorgung",
+      "Kurzfristige Termine",
     ],
   },
   {
-    key: "akustik",
-    title: "Akustikdecken & -segel",
-    image: "https://source.unsplash.com/1200x800/?acoustic,office",
+    key: "hausmeister",
+    title: "Hausmeisterservice",
+    image: "/photos/hausmeister.jpg",
     description:
-      "Raumakustische Optimierung mit gelochten GK, Mineralfaser, Baffeln und Segeln – für konzentriertes Arbeiten.",
+        "Regelmäßige Pflege, Kontrolle und kleine Reparaturen – wir halten Ihre Immobilie in Schuss.",
+    serviceInfo:
+        "Regelmäßige Objektkontrollen, Pflege der Außenanlagen, Kleinreparaturen und Koordination externer Dienste – planbar und zuverlässig.",
     facts: [
-      "αw-optimierte Systeme",
-      "Baffeln & Segel",
-      "Messung & Beratung",
+      "Objektpflege & Wartung",
+      "Kleinreparaturen",
+      "Winterdienst nach Bedarf",
     ],
   },
   {
-    key: "brandschutz",
-    title: "Brandschutzsysteme",
-    image: "https://source.unsplash.com/1200x800/?fire,protection,construction",
+    key: "abriss-umbau",
+    title: "Abriss- & Umbauarbeiten",
+    image: "/photos/abriss.jpg",
     description:
-      "Zugelassene Lösungen für Wände, Decken, Schächte und Abschottungen gemäß Muster-Leitungsanlagen-Richtlinie.",
+        "Vom Teilabbruch bis zur Entkernung: Wir schaffen Platz für Neues und setzen Umbauten sauber um.",
+    serviceInfo:
+        "Sichere Ausführung mit Staub- und Lärmschutz, Entkernung und Abtransport – wir bereiten alles für den reibungslosen Umbau vor.",
     facts: [
-      "F30–F120 nach System",
-      "Schachtwände / Verkleidungen",
-      "Kabel- & Rohrabschottungen",
+      "Teil-/Komplettabriss",
+      "Entkernung",
+      "Staubschutz & Entsorgung",
     ],
   },
   {
-    key: "vorsatzschalen",
-    title: "Vorsatzschalen & Installationswände",
-    image: "https://source.unsplash.com/1200x800/?renovation,wall",
+    key: "bodenverlegung",
+    title: "Bodenverlegung",
+    image: "/photos/bodenlegen.jpg",
     description:
-      "Zur energetischen oder optischen Ertüchtigung bestehender Wände – ideal auch für Leitungsführungen.",
+        "Parkett, Laminat oder Teppich – fachgerechte Verlegung mit perfektem Finish.",
+    serviceInfo:
+        "Beratung zu Material und Aufbau, professionelle Verlegung inkl. Untergrundvorbereitung und sauberen Abschlüssen.",
     facts: [
-      "Direkt/auf Ständerwerk",
-      "Integrierte Installationen",
-      "Geringe Baufeuchte",
+      "Untergrundvorbereitung",
+      "Parkett/Laminat/Teppich",
+      "Sockelleisten & Abschlüsse",
     ],
   },
   {
-    key: "dachausbau",
-    title: "Dachgeschossausbau",
-    image: "https://source.unsplash.com/1200x800/?attic,renovation",
+    key: "trockenbau",
+    title: "Trockenbau",
+    image: "/photos/trockenbauS.jpg",
     description:
-      "Effiziente Dämmung und Bekleidung von Schrägen und Gauben inkl. Dampfbremse – behaglich & normgerecht.",
+        "Trennwände, Decken, Verkleidungen und Raumaufteilungen – maßgeschneiderte Lösungen für Wohn- und Gewerbeobjekte.",
+    serviceInfo:
+        "Individuelle Raumaufteilung, Decken- und Wandverkleidungen inkl. Schall- und Brandschutz – sauber und termingerecht umgesetzt.",
     facts: [
-      "GK/GKBI je Nutzung",
-      "Luftdichtheit nach DIN 4108",
-      "Wärme-/Schallschutz",
+      "Wände & Decken",
+      "Schall- & Brandschutz",
+      "Saubere Montage",
     ],
   },
   {
-    key: "daemmung",
-    title: "Wärme- & Schalldämmung",
-    image: "https://source.unsplash.com/1200x800/?insulation,mineralwool",
+    key: "fugarbeiten",
+    title: "Fugarbeiten",
+    image: "/photos/fugarbeiten.jpg",
     description:
-      "Mineralwolle, Holzfaser & Co. fachgerecht verbaut – für Energieeffizienz und Ruhe.",
+        "Sämtliche Fugarbeiten im Innen- und Außenbereich – technisch korrekt und optisch sauber.",
+    serviceInfo:
+        "Präzise elastische und mineralische Fugen für Bad, Küche und Fassade – optisch stimmig, technisch korrekt.",
     facts: [
-      "WLG-optimierte Materialien",
-      "Trittschall & Luftschall",
-      "Brandschutzklasse A1/A2",
+      "Silikon/Acryl/Elastisch",
+      "Innen & Außen",
+      "Saubere Ausführung",
     ],
   },
   {
-    key: "oberflaechen",
-    title: "Spachtelarbeiten (Q1–Q4)",
-    image: "https://source.unsplash.com/1200x800/?plaster,wall",
+    key: "gebaeudereinigung",
+    title: "Gebäudereinigung",
+    image: "/photos/reinigung.jpg",
     description:
-      "Perfekte Oberflächenqualität für Maler-, Tapezier- oder Sichtflächen – von funktional bis fugenlos fein.",
+        "Gründliche Reinigung von Wohn- und Gewerbeimmobilien – von der Grundreinigung bis zur laufenden Unterhaltsreinigung.",
+    serviceInfo:
+        "Von Grund- bis Unterhaltsreinigung: feste Intervalle, klare Checklisten und zuverlässige Teams für dauerhaft gepflegte Objekte.",
     facts: [
-      "Q1–Q4 gemäß Merkblatt",
-      "Grundierung & Finish",
-      "Eigenes Qualitätsmanagement",
-    ],
-  },
-  {
-    key: "trockenestrich",
-    title: "Trockenestrich",
-    image: "https://source.unsplash.com/1200x800/?flooring,installation",
-    description:
-      "Schnelle, trockene Bodensysteme für Neubau & Sanierung – geringe Aufbauhöhe, kurze Bauzeit.",
-    facts: [
-      "Fermacell/Knauf Systeme",
-      "Trittschalldämmung integriert",
-      "Belegefertig in kurzer Zeit",
-    ],
-  },
-  {
-    key: "tueren",
-    title: "Türen & Zargen",
-    image: "https://source.unsplash.com/1200x800/?door,installation",
-    description:
-      "Montage von Innentüren inkl. Zargen in Trockenbauwänden – bündig, schalldicht und sauber eingepasst.",
-    facts: [
-      "Holz/Stahlzargen",
-      "Schallschutz- & Brandschutzelemente",
-      "Beschläge nach Vorgabe",
-    ],
-  },
-  {
-    key: "feuchtraum",
-    title: "Feuchtraumausbau",
-    image: "https://source.unsplash.com/1200x800/?bathroom,renovation",
-    description:
-      "Systeme für hoch beanspruchte Bereiche mit GKBI, Abdichtung und passenden Beschichtungen.",
-    facts: [
-      "GKBI/Hydro-Systeme",
-      "Abdichtung gemäß Norm",
-      "Schimmelprävention",
-    ],
-  },
-  {
-    key: "raum-in-raum",
-    title: "Raum-in-Raum-Systeme",
-    image: "https://source.unsplash.com/1200x800/?modular,office",
-    description:
-      "Flexible, rückbaubare Lösungen für Meeting- und Rückzugsräume ohne Eingriff in die Gebäudestruktur.",
-    facts: [
-      "Schnelle Montage",
-      "Hoher Schallschutz",
-      "Individuelle Ausstattung",
+      "Grund- & Unterhalt",
+      "Bauendreinigung",
+      "Gewerbe & Privat",
     ],
   },
 ];
@@ -408,82 +376,95 @@ function Hero({ setRoute }) {
 // ---- LEISTUNGEN PAGE ----
 function Leistungen() {
   return (
-    <section className="py-12 sm:py-16">
-      <Container>
-        <div className="mb-10 flex items-end justify-between gap-6">
-          <div>
-            <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
-              Leistungen
-            </h2>
-            <p className="mt-2 max-w-2xl text-slate-600">
-              Die wichtigsten Bereiche des modernen Trockenbaus auf einen Blick –
-              alles kompakt auf einer Seite.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {services.map((s) => (
-            <article key={s.key} className="overflow-hidden rounded-2xl border bg-white shadow-sm">
-              <div className="relative h-56 w-full">
-                <img
-                  src={s.image}
-                  alt={s.title}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <div className="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold shadow">
-                  {s.title}
-                </div>
+      <section className="py-12 sm:py-16">
+        <Container>
+          <div className="mb-10 flex items-end justify-between gap-6">
+            <div>
+              <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
+                Leistungen
+              </h2>
+              <div className="mt-2 max-w-3xl space-y-3 text-slate-700">
+                <p>
+                  Wir bieten Ihnen ein umfassendes Serviceangebot, das sämtliche
+                  Gewerke umfasst. Dabei arbeiten wir eng mit erfahrenen
+                  Partnerunternehmen zusammen, um eine schnelle und professionelle
+                  Ausführung aller Arbeiten zu garantieren. Als zentraler
+                  Ansprechpartner übernehmen wir die gesamte Organisation und
+                  Kommunikation – Sie müssen sich um nichts kümmern.
+                </p>
+                <p>Unsere Leistungen im Überblick:</p>
               </div>
-              <div className="grid gap-0 md:grid-cols-[1fr_320px]">
-                <div className="p-5">
-                  <p className="text-slate-700">{s.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {s.facts.map((f, idx) => (
-                      <span
-                        key={idx}
-                        className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium"
-                      >
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            {services.map((s) => (
+                <article key={s.key} className="overflow-hidden rounded-2xl border bg-white shadow-sm">
+                  <div className="relative h-56 w-full">
+                    <img
+                        src={s.image}
+                        alt={s.title}
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div className="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold shadow">
+                      {s.title}
+                    </div>
+                  </div>
+                  <div className="grid gap-0 md:grid-cols-[1fr_320px]">
+                    <div className="p-5">
+                      <p className="text-slate-700">{s.description}</p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {s.facts.map((f, idx) => (
+                            <span
+                                key={idx}
+                                className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium"
+                            >
                         <CheckCircle2 className="h-3.5 w-3.5" /> {f}
                       </span>
-                    ))}
-                  </div>
-                </div>
-                {/* Infobox */}
-                <div className="flex flex-col gap-3 border-t bg-slate-50 p-5 md:border-l md:border-t-0">
-                  <div className="flex items-center gap-2 text-slate-600">
-                    <Shield className="h-4 w-4" />
-                    <p className="text-sm font-semibold">Info</p>
-                  </div>
-                  <div className="text-sm text-slate-700">
-                    <p>
-                      Ausführung nach Herstellerrichtlinien (z. B. Knauf, Rigips) und
-                      den einschlägigen DIN-Normen. Dokumentation & Abnahme inklusive.
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2 text-center text-xs text-slate-600">
-                    <div className="rounded-xl border bg-white p-3">
-                      <Hammer className="mx-auto mb-1 h-4 w-4" />
-                      <p>Fachgerecht</p>
+                        ))}
+                      </div>
                     </div>
-                    <div className="rounded-xl border bg-white p-3">
-                      <Ruler className="mx-auto mb-1 h-4 w-4" />
-                      <p>Maßhaltig</p>
-                    </div>
-                    <div className="rounded-xl border bg-white p-3">
-                      <Clock className="mx-auto mb-1 h-4 w-4" />
-                      <p>Termintreu</p>
+                    {/* Infobox */}
+                    <div className="flex flex-col gap-3 border-t bg-slate-50 p-5 md:border-l md:border-t-0">
+                      <div className="flex items-center gap-2 text-slate-600">
+                        <Shield className="h-4 w-4" />
+                        <p className="text-sm font-semibold">Service-Info</p>
+                      </div>
+                      <div className="text-sm text-slate-700">
+                        <p>{s.serviceInfo}</p>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2 text-center text-xs text-slate-600">
+                        <div className="rounded-xl border bg-white p-3">
+                          <Hammer className="mx-auto mb-1 h-4 w-4" />
+                          <p>Qualifiziert</p>
+                        </div>
+                        <div className="rounded-xl border bg-white p-3">
+                          <Ruler className="mx-auto mb-1 h-4 w-4" />
+                          <p>Transparent</p>
+                        </div>
+                        <div className="rounded-xl border bg-white p-3">
+                          <Clock className="mx-auto mb-1 h-4 w-4" />
+                          <p>Termintreu</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </Container>
-    </section>
+                </article>
+            ))}
+          </div>
+
+          {/* Partnergewerke Hinweis */}
+          <div className="mt-12 rounded-2xl border bg-emerald-50 p-6">
+            <p className="font-semibold text-emerald-900">Komplettsanierung aus einer Hand</p>
+            <p className="mt-2 text-sm text-emerald-900/80">
+              Unsere Partnerunternehmen – z. B. Fliesenleger, Elektriker, Verputzer, Fensterbauer und Klempner –
+              unterstützen uns bei Spezialaufgaben. So erhalten Sie alle Leistungen koordiniert aus einer Hand.
+            </p>
+          </div>
+        </Container>
+      </section>
   );
 }
 
