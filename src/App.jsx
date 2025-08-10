@@ -219,7 +219,7 @@ function Nav({ route, setRoute }) {
       <Container>
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <div className="h-12 flex items-center justify-center">
+            <div className="h-12 flex items-center justify-center cursor-pointer" onClick={() => setRoute("home")}>
               <img
                 src="/navbarLogoFix.png"
                 alt={COMPANY.name}
