@@ -515,9 +515,9 @@ function Unternehmen() {
           <div>
             <div className="overflow-hidden rounded-2xl border shadow-sm">
               <img
-                src="https://source.unsplash.com/1200x900/?construction,team"
-                alt="Team am Bau"
-                className="h-72 w-full object-cover"
+                src="/public/photos/ertugrul.jpg"
+                alt="geschaeftsfuehrer"
+                className="h-[32rem] w-full object-cover object-top"
               />
               <div className="space-y-4 p-6">
                 <h3 className="text-lg font-bold">Unser Geschäftsführer</h3>
@@ -944,7 +944,7 @@ export default function App() {
                 </div>
                 <div className="overflow-hidden rounded-2xl border bg-white shadow-sm">
                   <img
-                    src="/public/photos/handshake.jpg"
+                    src="/public/photos/handshake_fix.jpg"
                     alt="Trockenbau Beispiel"
                     className="h-64 w-full object-cover"
                   />
