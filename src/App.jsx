@@ -543,98 +543,149 @@ function Unternehmen() {
 
 // ---- KONTAKT PAGE ----
 function Kontakt() {
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState(null);
   const [mapConsent, setMapConsent] = useState(false);
+
   return (
-    <section className="py-12 sm:py-16">
-      <Container>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <div>
-            <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
-              Kontakt
-            </h2>
-            <p className="mt-2 text-slate-700">
-              Erzählen Sie uns kurz von Ihrem Projekt – wir melden uns zeitnah
-              mit einem Vorschlag oder Angebot.
-            </p>
+      <section className="py-12 sm:py-16">
+        <Container>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div>
+              <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
+                Kontakt
+              </h2>
+              <p className="mt-2 text-slate-700">
+                Erzählen Sie uns kurz von Ihrem Projekt – wir melden uns zeitnah
+                mit einem Vorschlag oder Angebot.
+              </p>
 
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                const data = new FormData(e.currentTarget);
-                const payload = Object.fromEntries(data.entries());
-                alert(
-                  `Danke! Wir melden uns.\\n\\n${JSON.stringify(payload, null, 2)}`
-                );
-                e.currentTarget.reset();
-              }}
-              className="mt-6 space-y-4"
-            >
-              <div>
-                <label className="mb-1 block text-sm font-medium">Ihr Name</label>
-                <input
-                  name="name"
-                  required
-                  className="w-full rounded-xl border px-3 py-2 outline-none ring-emerald-600 focus:ring"
-                  placeholder="Vor- und Nachname"
-                />
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
+              <form
+                  name="kontakt"
+                  method="POST"
+                  data-netlify="true"
+                  netlify-honeypot="website"
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    setStatus(null);
+                    setSending(true);
+                    const form = e.currentTarget;
+                    const data = new FormData(form);
+
+                    // Honeypot: wenn gefüllt, still ok
+                    if (data.get("website")) {
+                      setSending(false);
+                      form.reset();
+                      setStatus({ ok: true, msg: "Danke! Ihre Anfrage wurde versendet." });
+                      return;
+                    }
+
+                    // Netlify Forms benötigt 'form-name'
+                    if (!data.get("form-name")) data.append("form-name", "kontakt");
+
+                    try {
+                      const body = new URLSearchParams(data).toString();
+                      const res = await fetch("/", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                        body,
+                      });
+                      if (!res.ok) throw new Error("send-failed");
+                      setStatus({ ok: true, msg: "Danke! Ihre Anfrage wurde versendet." });
+                      form.reset();
+                    } catch (err) {
+                      setStatus({
+                        ok: false,
+                        msg:
+                            "Senden fehlgeschlagen. Bitte versuchen Sie es später erneut oder schreiben Sie uns direkt per E-Mail.",
+                      });
+                    } finally {
+                      setSending(false);
+                    }
+                  }}
+                  className="mt-6 space-y-4"
+              >
+                {/* Netlify Forms: Hidden Form-Name */}
+                <input type="hidden" name="form-name" value="kontakt" />
+                {/* Honeypot-Feld gegen Spam: NICHT ausfüllen */}
+                <input type="text" name="website" className="hidden" tabIndex="-1" autoComplete="off" />
+
                 <div>
-                  <label className="mb-1 block text-sm font-medium">E-Mail</label>
+                  <label className="mb-1 block text-sm font-medium">Ihr Name</label>
                   <input
-                    type="email"
-                    name="email"
-                    required
-                    className="w-full rounded-xl border px-3 py-2 outline-none ring-emerald-600 focus:ring"
-                    placeholder="name@firma.de"
+                      name="name"
+                      required
+                      className="w-full rounded-xl border px-3 py-2 outline-none ring-emerald-600 focus:ring"
+                      placeholder="Vor- und Nachname"
                   />
                 </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className="mb-1 block text-sm font-medium">E-Mail</label>
+                    <input
+                        type="email"
+                        name="email"
+                        required
+                        className="w-full rounded-xl border px-3 py-2 outline-none ring-emerald-600 focus:ring"
+                        placeholder="name@firma.de"
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-sm font-medium">Telefon</label>
+                    <input
+                        name="phone"
+                        className="w-full rounded-xl border px-3 py-2 outline-none ring-emerald-600 focus:ring"
+                        placeholder="+49 …"
+                    />
+                  </div>
+                </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium">Telefon</label>
-                  <input
-                    name="phone"
-                    className="w-full rounded-xl border px-3 py-2 outline-none ring-emerald-600 focus:ring"
-                    placeholder="+49 …"
+                  <label className="mb-1 block text-sm font-medium">Projekt / Nachricht</label>
+                  <textarea
+                      name="message"
+                      rows={5}
+                      className="w-full rounded-xl border px-3 py-2 outline-none ring-emerald-600 focus:ring"
+                      placeholder="Kurze Beschreibung, gewünschter Zeitraum, Ort …"
                   />
                 </div>
-              </div>
-              <div>
-                <label className="mb-1 block text-sm font-medium">Projekt / Nachricht</label>
-                <textarea
-                  name="message"
-                  rows={5}
-                  className="w-full rounded-xl border px-3 py-2 outline-none ring-emerald-600 focus:ring"
-                  placeholder="Kurze Beschreibung, gewünschter Zeitraum, Ort …"
-                />
-              </div>
-              <div className="flex items-center gap-3">
-                <button
-                  type="submit"
-                  className="inline-flex items-center rounded-2xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-emerald-700"
-                >
-                  <Mail className="mr-2 h-4 w-4" /> Nachricht senden
-                </button>
-                <a
-                  href={`mailto:${COMPANY.email}`}
-                  className="text-sm font-semibold text-emerald-700 hover:underline"
-                >
-                  Oder per E-Mail
-                </a>
-              </div>
-            </form>
 
-            <div className="mt-10 grid gap-3 text-sm">
-              <div className="flex items-center gap-2 text-slate-700">
-                <Phone className="h-4 w-4" /> {COMPANY.phone}
-              </div>
-              <div className="flex items-center gap-2 text-slate-700">
-                <Mail className="h-4 w-4" /> {COMPANY.email}
-              </div>
-              <div className="flex items-center gap-2 text-slate-700">
-                <MapPin className="h-4 w-4" /> {COMPANY.address}
-              </div>
+                <div className="flex items-center gap-3">
+                  <button
+                      type="submit"
+                      disabled={sending}
+                      className="inline-flex items-center rounded-2xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    <Mail className="mr-2 h-4 w-4" /> {sending ? "Senden…" : "Nachricht senden"}
+                  </button>
+                  <a
+                      href={`mailto:${COMPANY.email}`}
+                      className="text-sm font-semibold text-emerald-700 hover:underline"
+                  >
+                    Oder per E-Mail
+                  </a>
+                  {status && (
+                      <p
+                          className={`text-xs ${status.ok ? "text-emerald-700" : "text-red-600"}`}
+                          aria-live="polite"
+                      >
+                        {status.msg}
+                      </p>
+                  )}
+                </div>
+
+                <div className="mt-10 grid gap-3 text-sm">
+                  <div className="flex items-center gap-2 text-slate-700">
+                    <Phone className="h-4 w-4" /> {COMPANY.phone}
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-700">
+                    <Mail className="h-4 w-4" /> {COMPANY.email}
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-700">
+                    <MapPin className="h-4 w-4" /> {COMPANY.address}
+                  </div>
+                </div>
+              </form>
             </div>
-          </div>
 
             <div className="overflow-hidden rounded-2xl border shadow-sm">
               {!mapConsent ? (
