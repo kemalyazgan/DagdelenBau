@@ -399,12 +399,12 @@ function Leistungen() {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {services.map((s) => (
-                <article key={s.key} className="overflow-hidden rounded-2xl border bg-white shadow-sm">
+                <article key={s.key} className="overflow-hidden rounded-2xl border bg-white shadow-sm flex flex-col h-full">
                   <div className="relative h-56 w-full">
                     <img
                         src={s.image}
                         alt={s.title}
-                        className="h-full w-full object-cover"
+                        className="block h-full w-full object-cover"
                         loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
@@ -412,8 +412,8 @@ function Leistungen() {
                       {s.title}
                     </div>
                   </div>
-                  <div className="grid gap-0 md:grid-cols-[1fr_320px]">
-                    <div className="p-5">
+                  <div className="grid gap-0 md:grid-cols-[1fr_320px] flex-grow">
+                    <div className="p-5 flex flex-col h-full">
                       <p className="text-slate-700">{s.description}</p>
                       <div className="mt-4 flex flex-wrap gap-2">
                         {s.facts.map((f, idx) => (
@@ -421,8 +421,8 @@ function Leistungen() {
                                 key={idx}
                                 className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium"
                             >
-                        <CheckCircle2 className="h-3.5 w-3.5" /> {f}
-                      </span>
+<CheckCircle2 className="h-3.5 w-3.5" /> {f}
+</span>
                         ))}
                       </div>
                     </div>
@@ -471,9 +471,8 @@ function Leistungen() {
 // ---- UNTERNEHMEN PAGE ----
 function Unternehmen() {
   const stats = [
-    { label: "Jahre Erfahrung", value: "10+" },
-    { label: "abgeschl. Projekte/Jahr", value: "80+" },
-    { label: "Mitarbeitende", value: "15" },
+    { label: "Jahre Erfahrung", value: "40+" },
+    { label: "abgeschl. Projekte/Jahr", value: "10+" },
   ];
 
   return (
@@ -485,9 +484,8 @@ function Unternehmen() {
               {COMPANY.name} – Ihr Partner für Trockenbau
             </h2>
             <p className="mt-3 text-slate-700">
-              Wir stehen für saubere Arbeit, verlässliche Absprachen und
-              transparente Kalkulation. Ob Ausbau im Bestand, Gewerbe oder
-              Neubau – wir liefern Qualität, die bleibt.
+              Wir sind ein <strong>neu gegründetes Bauunternehmen</strong>, das auf <em>über 40 Jahre Erfahrung</em> aus drei Generationen zurückgreift. Die Wurzeln von <strong>Dagdelen Bau</strong> reichen bis zu den Anfängen des Großvaters und Vaters in der Baubranche, deren Wissen, <em>handwerkliche Qualität</em> und Werte die Grundlage des heutigen Unternehmens bilden. Mit dieser <strong>starken Familientradition</strong> im Rücken wird Dagdelen Bau von der aktuellen Generation geführt und mit <em>frischem Unternehmergeist</em> in die Zukunft getragen.
+              Die Verbindung aus jahrzehntelanger Erfahrung und der Dynamik eines jungen, motivierten Teams macht Dagdelen Bau zu einem zuverlässigen Partner für private, gewerbliche und kommunale Bauprojekte. Traditionelle Handwerkskunst, kombiniert mit modernen Methoden und innovativen Lösungen, garantiert maßgeschneiderte Ergebnisse in höchster Qualität.
             </p>
             <div className="mt-6 grid grid-cols-3 gap-3">
               {stats.map((s, i) => (
@@ -523,18 +521,16 @@ function Unternehmen() {
                 className="h-72 w-full object-cover"
               />
               <div className="space-y-4 p-6">
-                <h3 className="text-lg font-bold">Unsere Mission</h3>
+                <h3 className="text-lg font-bold">Unser Geschäftsführer</h3>
                 <p className="text-slate-700">
-                  Handwerk mit Anspruch: Wir verbinden fachliche Präzision mit
-                  freundlicher Kommunikation und einem Auge fürs Detail. So
-                  entstehen Räume, in denen man sich wohlfühlt.
+                  Unser Geschäftsführer führt Dagdelen Bau mit der Erfahrung aus drei Generationen und klarem Fokus auf Qualität, Transparenz und Termintreue. Er ist Ihr zentraler Ansprechpartner von der ersten Idee bis zur Abnahme.
                 </p>
                 <div className="rounded-xl bg-slate-50 p-4 text-sm text-slate-700">
-                  <p className="font-semibold">Mitgliedschaften & Qualifikationen</p>
+                  <p className="font-semibold">Qualifikationen & Zertifikate</p>
                   <ul className="mt-2 list-inside list-disc space-y-1">
-                    <li>Brandschutzschulungen (Hersteller)</li>
+                    <li>Brandschutzschulungen</li>
                     <li>DGUV & Arbeitssicherheit unterwiesen</li>
-                    <li>Nachweis Q3/Q4-Oberflächenverarbeitung</li>
+                    <li>Rauchmelder‑Zertifikat</li>
                   </ul>
                 </div>
               </div>
@@ -548,6 +544,7 @@ function Unternehmen() {
 
 // ---- KONTAKT PAGE ----
 function Kontakt() {
+  const [mapConsent, setMapConsent] = useState(false);
   return (
     <section className="py-12 sm:py-16">
       <Container>
@@ -640,68 +637,213 @@ function Kontakt() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border shadow-sm">
-            <iframe
-              title="Karte"
-              src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                `${COMPANY.name} ${COMPANY.city}`
-              )}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-              className="h-full min-h-[420px] w-full"
-              loading="lazy"
-            />
-          </div>
+            <div className="overflow-hidden rounded-2xl border shadow-sm">
+              {!mapConsent ? (
+                  <div className="flex h-full min-h-[420px] w-full flex-col items-center justify-center bg-slate-50 p-6 text-center">
+                    <p className="max-w-md text-sm text-slate-700">
+                      Zur Anzeige der Karte von Google Maps benötigen wir Ihre Einwilligung. Erst danach wird eine Verbindung
+                      zu Google hergestellt und es können personenbezogene Daten übertragen werden.
+                    </p>
+                    <button
+                        onClick={() => setMapConsent(true)}
+                        className="mt-4 inline-flex items-center rounded-2xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-emerald-700"
+                    >
+                      Karte laden
+                    </button>
+                  </div>
+              ) : (
+                  <iframe
+                      title="Karte"
+                      src={`https://maps.google.com/maps?q=${encodeURIComponent(`${COMPANY.name} ${COMPANY.city}`)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                      className="h-full min-h-[420px] w-full"
+                      loading="lazy"
+                  />
+              )}
+            </div>
         </div>
       </Container>
     </section>
   );
 }
+// ---- DATENSCHUTZ PAGE ----
+function Datenschutz() {
+  return (
+      <section className="py-12 sm:py-16">
+        <Container>
+          <div className="mx-auto max-w-3xl">
+            <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">Datenschutzerklärung</h2>
+            <p className="mt-2 text-sm text-slate-500">Informationen gemäß Art. 13, 14 DSGVO</p>
 
+            <div className="mt-6 rounded-2xl border bg-white p-6 shadow-sm text-slate-700">
+              <h3 className="font-semibold">1. Verantwortlicher</h3>
+              <p className="mt-2">
+                Dagdelen Bau · Inhaber: Ertugrul Dagdelen · Honsberger Str. 93, 42857 Remscheid ·
+                E-Mail: <a className="underline" href="mailto:info@dagdelen-bau.de">info@dagdelen-bau.de</a> ·
+                Tel.: 0176 56063469
+              </p>
+
+              <h3 className="mt-6 font-semibold">2. Hosting</h3>
+              <p className="mt-2">
+                Unsere Website wird bei einem externen Anbieter gehostet. Mit dem Hoster besteht ein
+                Auftragsverarbeitungsvertrag (Art. 28 DSGVO). Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO
+                (berechtigtes Interesse an sicherer, schneller Bereitstellung).
+              </p>
+
+              <h3 className="mt-6 font-semibold">3. Server-Logfiles</h3>
+              <p className="mt-2">
+                Beim Aufruf werden technisch notwendige Daten (z. B. IP-Adresse, Zeitpunkt, User-Agent) vorübergehend gespeichert.
+              </p>
+
+              <h3 className="mt-6 font-semibold">4. Kontaktformular</h3>
+              <p className="mt-2">
+                Verarbeiten wir zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b DSGVO). Keine Weitergabe ohne Einwilligung.
+                Alternativ können Sie uns per E-Mail kontaktieren.
+              </p>
+
+              <h3 className="mt-6 font-semibold">5. Karten (Google Maps) – Zwei-Klick-Lösung</h3>
+              <p className="mt-2">
+                Karten laden wir erst nach Ihrer ausdrücklichen Einwilligung. Erst dann wird eine Verbindung zu Google aufgebaut
+                und es können personenbezogene Daten (z. B. IP-Adresse) übertragen werden (Art. 6 Abs. 1 lit. a DSGVO).
+              </p>
+
+              <h3 className="mt-6 font-semibold">6. Cookies</h3>
+              <p className="mt-2">
+                Wir setzen derzeit keine Tracking-Cookies ein. Sollten künftig Dienste eingesetzt werden, die Cookies setzen,
+                informieren wir vorab und holen Ihre Einwilligung ein (TTDSG, Art. 6 Abs. 1 lit. a DSGVO).
+              </p>
+
+              <h3 className="mt-6 font-semibold">7. Ihre Rechte</h3>
+              <p className="mt-2">
+                Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch
+                (Art. 15–21 DSGVO) sowie Beschwerderecht bei einer Aufsichtsbehörde.
+              </p>
+
+              <h3 className="mt-6 font-semibold">8. TLS-Verschlüsselung</h3>
+              <p className="mt-2">
+                Unsere Website nutzt HTTPS/TLS. Erkennbar an „https://“ und Schloss-Symbol im Browser.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+  );
+}
+
+// ---- IMPRESSUM PAGE ----
+function Impressum() {
+  return (
+      <section className="py-12 sm:py-16">
+        <Container>
+          <div className="mx-auto max-w-3xl">
+            <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">Impressum</h2>
+            <p className="mt-2 text-sm text-slate-500">Angaben gemäß § 5 TMG</p>
+
+
+            <div className="mt-6 rounded-2xl border bg-white p-6 shadow-sm">
+              <div className="space-y-1 text-slate-700">
+                <p className="font-semibold">Dagdelen Bau</p>
+                <p>Inhaber: Ertugrul Dagdelen</p>
+                <p>Honsberger Str. 93</p>
+                <p>42857 Remscheid</p>
+              </div>
+
+
+              <div className="mt-6 grid gap-1 text-slate-700">
+                <p className="font-semibold">Kontakt</p>
+                <p>Telefon: 0176 56063469</p>
+                <p>E‑Mail: <a className="underline hover:no-underline" href="mailto:info@dagdelen-bau.de">info@dagdelen-bau.de</a></p>
+              </div>
+
+
+              <div className="mt-6 grid gap-1 text-slate-700">
+                <p><span className="font-semibold">Steuernummer:</span> 126/5026/3397</p>
+                <p><span className="font-semibold">Zuständige Kammer:</span> Handwerkskammer Düsseldorf</p>
+                <p><span className="font-semibold">Betriebsnummer:</span> 1891787</p>
+              </div>
+
+
+              <div className="mt-6 rounded-xl bg-slate-50 p-4 text-sm text-slate-700">
+                <p className="font-semibold">Hinweis zu Qualifikationen & Zertifikaten</p>
+                <p className="mt-2">Brandschutzschulungen (Hersteller) · DGUV & Arbeitssicherheit unterwiesen · Rauchmelder‑Zertifikat</p>
+              </div>
+            </div>
+
+
+            <div className="prose prose-slate mt-8 max-w-none text-xs">
+              <h3><strong>Haftung für Inhalte</strong></h3>
+              <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich; nach §§ 8 bis 10 TMG sind wir jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+
+
+              <h3><strong>Haftung für Links</strong></h3>
+              <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten sind stets die jeweiligen Anbieter oder Betreiber verantwortlich.</p>
+
+
+              <h3><strong>Urheberrecht</strong></h3>
+              <p>Die auf dieser Website erstellten Inhalte und Werke unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung der jeweiligen Rechteinhaber.</p>
+
+
+              <h3><strong>Verbraucherstreitbeilegung</strong></h3>
+              <p>Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen (§ 36 VSBG).</p>
+              <h3><strong>EU-Streitschlichtung</strong></h3>
+              <p>
+                Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+                <a className="underline" href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noreferrer">
+                  https://ec.europa.eu/consumers/odr
+                </a>. Unsere E-Mail-Adresse finden Sie oben im Impressum.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+  );
+}
 // ---- FOOTER ----
 function Footer({ setRoute }) {
   return (
-    <footer className="border-t bg-white py-8 text-sm text-slate-600">
-      <Container>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          <div>
-            <p className="font-bold text-slate-800">{COMPANY.name}</p>
-            <p>{COMPANY.tagline}</p>
-            <div className="mt-2 space-y-1">
-              <div className="flex items-center gap-2"><Phone className="h-4 w-4" /> {COMPANY.phone}</div>
-              <div className="flex items-center gap-2"><Mail className="h-4 w-4" /> {COMPANY.email}</div>
-              <div className="flex items-center gap-2"><MapPin className="h-4 w-4" /> {COMPANY.address}</div>
+      <footer className="border-t bg-white py-8 text-sm text-slate-600">
+        <Container>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <div>
+              <p className="font-bold text-slate-800">{COMPANY.name}</p>
+              <p>{COMPANY.tagline}</p>
+              <div className="mt-2 space-y-1">
+                <div className="flex items-center gap-2"><Phone className="h-4 w-4" /> {COMPANY.phone}</div>
+                <div className="flex items-center gap-2"><Mail className="h-4 w-4" /> {COMPANY.email}</div>
+                <div className="flex items-center gap-2"><MapPin className="h-4 w-4" /> {COMPANY.address}</div>
+              </div>
+            </div>
+            <div>
+              <p className="font-semibold text-slate-800">Sitemap</p>
+              <div className="mt-2 grid gap-1">
+                {[
+                  { id: "home", label: "Start" },
+                  { id: "leistungen", label: "Leistungen" },
+                  { id: "unternehmen", label: "Unternehmen" },
+                  { id: "kontakt", label: "Kontakt" },
+                ].map((l) => (
+                    <button
+                        key={l.id}
+                        onClick={() => setRoute(l.id)}
+                        className="w-fit text-left text-slate-700 hover:underline"
+                    >
+                      {l.label}
+                    </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="font-semibold text-slate-800">Rechtliches</p>
+              <div className="mt-2 grid gap-1">
+                <button onClick={() => setRoute('impressum')} className="w-fit text-left text-slate-700 hover:underline">Impressum</button>
+                <button onClick={() => setRoute('datenschutz')} className="w-fit text-left text-slate-700 hover:underline">Datenschutz</button>
+              </div>
             </div>
           </div>
-          <div>
-            <p className="font-semibold text-slate-800">Sitemap</p>
-            <div className="mt-2 grid gap-1">
-              {[
-                { id: "home", label: "Start" },
-                { id: "leistungen", label: "Leistungen" },
-                { id: "unternehmen", label: "Unternehmen" },
-                { id: "kontakt", label: "Kontakt" },
-              ].map((l) => (
-                <button
-                  key={l.id}
-                  onClick={() => setRoute(l.id)}
-                  className="w-fit text-left text-slate-700 hover:underline"
-                >
-                  {l.label}
-                </button>
-              ))}
-            </div>
+          <div className="mt-8 border-t pt-4 text-xs text-slate-500">
+            © {new Date().getFullYear()} {COMPANY.name}. Alle Rechte vorbehalten.
           </div>
-          <div>
-            <p className="font-semibold text-slate-800">Rechtliches</p>
-            <p className="mt-2 text-slate-500">
-              Platzhalter für Impressum & Datenschutz. (Ersetzen vor Livegang.)
-            </p>
-          </div>
-        </div>
-        <div className="mt-8 border-t pt-4 text-xs text-slate-500">
-          © {new Date().getFullYear()} {COMPANY.name}. Alle Rechte vorbehalten.
-        </div>
-      </Container>
-    </footer>
+        </Container>
+      </footer>
   );
 }
 
@@ -780,6 +922,8 @@ export default function App() {
       {route === "leistungen" && <Leistungen />}
       {route === "unternehmen" && <Unternehmen />}
       {route === "kontakt" && <Kontakt />}
+      {route === "impressum" && <Impressum />}
+      {route === "datenschutz" && <Datenschutz />}
 
       <Footer setRoute={setRoute} />
     </Root>
