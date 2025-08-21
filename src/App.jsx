@@ -515,7 +515,7 @@ function Unternehmen() {
           <div>
             <div className="overflow-hidden rounded-2xl border shadow-sm">
               <img
-                src="/public/photos/ertugrul.jpg"
+                src="/photos/ertugrul.jpg"
                 alt="geschaeftsfuehrer"
                 className="h-[32rem] w-full object-cover object-top"
               />
@@ -944,7 +944,7 @@ export default function App() {
                 </div>
                 <div className="overflow-hidden rounded-2xl border bg-white shadow-sm">
                   <img
-                    src="/public/photos/handshake_fix.jpg"
+                    src="/photos/handshake_fix.jpg"
                     alt="Trockenbau Beispiel"
                     className="h-64 w-full object-cover"
                   />
