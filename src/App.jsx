@@ -323,7 +323,6 @@ function Hero({ setRoute }) {
             muted
             loop
             playsInline
-            poster="/images/hero-poster.jpg"
         >
           <source src="/videos/hero.webm" type="video/webm" />
           <source src="/videos/hero.mp4" type="video/mp4" />
