@@ -650,6 +650,30 @@ function Kontakt() {
                   </div>
                 </div>
                 <div>
+                  <label className="mb-1 block text-sm font-medium">Bevorzugte Leistung</label>
+                  <select
+                      name="service"
+                      className="w-full rounded-xl border px-3 py-2 outline-none ring-emerald-600 focus:ring"
+                  >
+                    <option value="">Bitte wählen Sie eine Leistung</option>
+                    {services.map((service) => (
+                        <option key={service.key} value={service.key}>
+                          {service.title}
+                        </option>
+                    ))}
+                    <option value="other">Mehrere / Andere Leistung</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="mb-1 block text-sm font-medium">Projekt / Nachricht</label>
+                  <textarea
+                      name="message"
+                      rows={5}
+                      className="w-full rounded-xl border px-3 py-2 outline-none ring-emerald-600 focus:ring"
+                      placeholder="Kurze Beschreibung, gewünschter Zeitraum, Ort …"
+                  />
+                </div>
+                <div>
                   <label className="mb-1 block text-sm font-medium">Projekt / Nachricht</label>
                   <textarea
                       name="message"
