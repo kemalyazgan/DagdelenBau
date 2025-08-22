@@ -158,6 +158,20 @@ const services = [
       "Gewerbe & Privat",
     ],
   },
+  {
+    key: "spachtelarbeiten",
+    title: "Spachtelarbeiten",
+    image: "/photos/spachtel.jpg",
+    description:
+        "Glatt, eben und bereit für das perfekte Finish – wir spachteln Wände und Decken fachgerecht.",
+    serviceInfo:
+        "Von der Fugenverspachtelung bis zur vollflächigen Glättung – wir sorgen für einwandfreie Oberflächen, die direkt für Maler- oder Tapezierarbeiten vorbereitet sind. Termingerecht, sauber und nach gewünschter Qualitätsstufe umgesetzt.",
+    facts: [
+      "Fugen & Schraubenlöcher",
+      "Vollflächige Glättung (Q1-Q4)",
+      "Saubere Oberflächenvorbereitung",
+    ],
+  },
 ];
 
 // ---- UI PRIMITIVES ----
@@ -329,14 +343,10 @@ function Hero({ setRoute }) {
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
       </div>
-
       {/* Overlay Content */}
+
       <Container>
         <div className="relative z-10 flex h-[68vh] flex-col items-start justify-end pb-10">
-          <div className="mb-2 flex items-center gap-2">
-            <Badge>Meisterbetrieb</Badge>
-            <Badge>Zuverlässig & sauber</Badge>
-          </div>
           <AnimatePresence mode="wait">
             <motion.h1
               key={index}
@@ -470,8 +480,8 @@ function Leistungen() {
 // ---- UNTERNEHMEN PAGE ----
 function Unternehmen() {
   const stats = [
-    { label: "Jahre Erfahrung", value: "40+" },
-    { label: "abgeschl. Projekte/Jahr", value: "10+" },
+    //{ label: "Jahre Erfahrung", value: "40+" },
+    //{ label: "abgeschl. Projekte/Jahr", value: "10+" },
   ];
 
   return (
@@ -483,10 +493,10 @@ function Unternehmen() {
               {COMPANY.name} – Ihr Partner für Trockenbau
             </h2>
             <p className="mt-3 text-slate-700">
-              Wir sind ein <strong>neu gegründetes Bauunternehmen</strong>, das auf <em>über 40 Jahre Erfahrung</em> aus drei Generationen zurückgreift. Die Wurzeln von <strong>Dagdelen Bau</strong> reichen bis zu den Anfängen des Großvaters und Vaters in der Baubranche, deren Wissen, <em>handwerkliche Qualität</em> und Werte die Grundlage des heutigen Unternehmens bilden. Mit dieser <strong>starken Familientradition</strong> im Rücken wird Dagdelen Bau von der aktuellen Generation geführt und mit <em>frischem Unternehmergeist</em> in die Zukunft getragen.
+              Wir sind ein <strong>junges Bauunternehmen</strong>, das auf <em>über 40 Jahre Erfahrung</em> aus drei Generationen zurückgreift. Die Wurzeln von <strong>Dagdelen Bau</strong> reichen bis zu den Anfängen des Großvaters und Vaters in der Baubranche, deren Wissen, <em>handwerkliche Qualität</em> und Werte die Grundlage des heutigen Unternehmens bilden. Mit dieser <strong>starken Familientradition</strong> im Rücken wird Dagdelen Bau von der aktuellen Generation geführt und mit <em>frischem Unternehmergeist</em> in die Zukunft getragen.
               Die Verbindung aus jahrzehntelanger Erfahrung und der Dynamik eines jungen, motivierten Teams macht Dagdelen Bau zu einem zuverlässigen Partner für private, gewerbliche und kommunale Bauprojekte. Traditionelle Handwerkskunst, kombiniert mit modernen Methoden und innovativen Lösungen, garantiert maßgeschneiderte Ergebnisse in höchster Qualität.
             </p>
-            <div className="mt-6 grid grid-cols-3 gap-3">
+            <div className=" grid grid-cols-3 gap-3">
               {stats.map((s, i) => (
                 <div key={i} className="rounded-2xl border bg-white p-4 text-center shadow-sm">
                   <p className="text-2xl font-extrabold text-emerald-700">{s.value}</p>
