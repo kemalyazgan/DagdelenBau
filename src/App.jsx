@@ -729,10 +729,11 @@ function Kontakt() {
               ) : (
                   <iframe
                       title="Karte"
-                      src={`https://maps.app.goo.gl/bdj42eQxoDMmaKXK7`}
+                      src={"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3553.40646937996!2d7.178184472420728!3d51.17078197136886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b92a618987d225%3A0xf836e8ad418e093!2sHonsberger%20Str.%2093%2C%2042857%20Remscheid!5e0!3m2!1sde!2sde!4v1755894948933!5m2!1sde!2sde"}
                       className="h-full min-h-[420px] w-full"
                       loading="lazy"
                   />
+
               )}
             </div>
         </div>
