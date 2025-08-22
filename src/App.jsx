@@ -729,7 +729,7 @@ function Kontakt() {
               ) : (
                   <iframe
                       title="Karte"
-                      src={`https://maps.google.com/maps?q=${encodeURIComponent(`${COMPANY.name} ${COMPANY.city}`)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                      src={`https://maps.app.goo.gl/bdj42eQxoDMmaKXK7`}
                       className="h-full min-h-[420px] w-full"
                       loading="lazy"
                   />
